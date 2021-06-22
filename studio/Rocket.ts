@@ -25,7 +25,18 @@ export class Rocket {
         let totAstronautMass = this.sumMass(this.astronauts);
         let totCurrMass= totCargoMass + totAstronautMass;
         return totCurrMass; 
-
+     }
+     canAdd(item: Payload): boolean {
+        if (this.currentMassKg() + item.massKg <= this.totalCapacityKg) {
+            return true;
+        }
+     }
+     addCargo(cargo: Cargo): boolean {
+        if(this.canAdd()){
+            return true;
+        }else{
+            return false;
+        }
      }
      //Uses this.sumMass to return the combined mass of this.astronauts and this.cargoItems  
 } 
